@@ -10,7 +10,7 @@ describe("Api Tests", () => {
     cy.request({
       method: "POST",
       url: url + "/v2/pet",
-      body: data.bodyPayload(),
+      body: data.bodyPetPayload(),
     }).then((response) => {
       expect(response.status).to.eq(200);
     });
@@ -28,7 +28,17 @@ describe("Api Tests", () => {
     });
   });
 
-
+  it('Update Pet Info', () => {
+    
+    cy.request({
+      method: 'POST',
+      url: url +'/v2/pet',
+      body: data.updatePetPayload()
+    })
+      .then((response) => {
+        expect(response.status).to.eq(200)
+      })
+  })
   it("Delete Pet", () => {
     cy.request({
       method: "DELETE",

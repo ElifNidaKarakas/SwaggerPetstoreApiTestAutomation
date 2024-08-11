@@ -7,27 +7,44 @@ class Data {
     return headerBody;
   }
 
-  bodyPayload() {
+  bodyPetPayload() {
     const postData = {
       id: 1,
       category: {
         id: 1,
-        name: "tablet",
+        name: "köpek",
       },
-      name: "doggie",
+      name: "Karabaş",
       photoUrls: ["string"],
       tags: [
         {
           id: 1,
-          name: "string",
+          name: "siyah",
         },
       ],
       status: "available",
     };
     return postData;
   }
-
-
- 
+  updatePetPayload() {
+    const postData = {
+      id: 1,
+      category: {
+        id: 1,
+        name: "köpek",
+      },
+      name: "Kara",
+      photoUrls: ["string"],
+      tags: [
+        {
+          id: 1,
+          name: "kahve",
+        },
+      ],
+      status: "available",
+    };
+    return postData;
+  }
+  
 }
 export default Data;
