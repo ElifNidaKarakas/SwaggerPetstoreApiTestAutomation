@@ -1,7 +1,7 @@
 import Data from "../data-helper/data";
 import Params from "../data-helper/params";
 
-describe("Api Tests", () => {
+describe("Pet Tests", () => {
   const data = new Data();
   const params = new Params();
   var url = params.url();
@@ -23,22 +23,23 @@ describe("Api Tests", () => {
   });
 
   it("Get Pet Status ", () => {
-    cy.request("GET", url + "/v2/pet/findByStatus?status=pending").then((response) => {
+    cy.request("GET", url + "/v2/pet/findByStatus?status=pending").then(
+      (response) => {
+        expect(response.status).to.eq(200);
+      }
+    );
+  });
+
+  it("Update Pet Info", () => {
+    cy.request({
+      method: "POST",
+      url: url + "/v2/pet",
+      body: data.updatePetPayload(),
+    }).then((response) => {
       expect(response.status).to.eq(200);
     });
   });
 
-  it('Update Pet Info', () => {
-    
-    cy.request({
-      method: 'POST',
-      url: url +'/v2/pet',
-      body: data.updatePetPayload()
-    })
-      .then((response) => {
-        expect(response.status).to.eq(200)
-      })
-  })
   it("Delete Pet", () => {
     cy.request({
       method: "DELETE",
@@ -49,5 +50,14 @@ describe("Api Tests", () => {
     });
   });
 
-
+  it("Delete Pet", () => {
+    cy.request({
+      method: "DELETE",
+      url: url + "/v2/pet/1",
+      headers: data.headerPayload(),
+      failOnStatusCode: false,
+    }).then((response) => {
+      expect(response.status).to.eq(404);
+    });
+  });
 });
