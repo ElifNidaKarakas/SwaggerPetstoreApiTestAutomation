@@ -1,8 +1,8 @@
-import Data from "../data-helper/data";
+import PetData from "../data-helper/petData";
 import Params from "../data-helper/params";
 
 describe("Pet Tests", () => {
-  const data = new Data();
+  const data = new PetData();
   const params = new Params();
   var url = params.url();
 

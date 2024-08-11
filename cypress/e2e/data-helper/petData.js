@@ -1,4 +1,4 @@
-class Data {
+class PetData {
   headerPayload() {
     const headerBody = {
       accept: "application/json",
@@ -47,4 +47,4 @@ class Data {
   }
   
 }
-export default Data;
+export default PetData;
